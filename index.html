@@ -2874,11 +2874,10 @@
   <div id="featureStatus" class="feature-status" role="status" aria-live="polite"></div>
   <dialog id="previewDialog" class="preview-dialog">
     <div class="preview-dialog-content">
-      <img id="previewImage" alt="">
       <h2 id="previewTitle"></h2>
       <p id="previewPeriod"></p>
+      <div id="storyContent" style="text-align: right; line-height: 1.8; margin: 16px 0; color: var(--ink); font-size: 15px;"></div>
       <div class="preview-actions">
-        <a id="previewLink" href="#">فتح التفاصيل</a>
         <button type="button" id="previewClose" class="preview-close">إغلاق</button>
       </div>
     </div>
@@ -2892,6 +2891,16 @@
   </dialog>
 
   <script>
+    const storyContent = document.getElementById("storyContent");
+    const patriarchStories = {
+      "patriarchs/01.html": "القديس مرقس الرسول، الرسول العظيم الذي حمل بشارة المسيح إلى أرض الفراعنة. بدأ خدمته برسالة إلهية وأسس الكنيسة القبطية على تعاليم المحبة والإيمان. عانى من الاضطهادات الشديدة لكنه لم يتراجع قط عن نشر كلمة الله. استشهد بعد حياة حافلة بالخدمة والتضحية، تاركاً إرثاً خالداً في قلوب ملايين المؤمنين.",
+      "patriarchs/02.html": "إنيانوس، البطريرك الثاني الذي تابع مسيرة القديس مرقس بكل إخلاص وشجاعة. قاد الكنيسة عبر فترات صعبة من الاضطهاد الروماني الشديد. كان معلماً حكيماً وقائداً روحياً صارماً، لم يضعف أمام تهديدات الأباطرة. ترك إرثاً عظيماً من الشهادة والإيمان الراسخ الذي ألهم الأجيال.",
+      "patriarchs/03.html": "ميليوس، الحكيم الذي قاد الكنيسة في عصر مليء بالتحديات الروحية والسياسية. كان معروفاً بعدله الشديد وحكمته الفائقة. اهتم بتعليم الشعب وتوعيتهم بأهمية الإيمان الحقيقي والعقيدة الصحيحة. دافع بقوة عن الأرثوذكسية وترك تراثاً روحياً عميقاً.",
+      "patriarchs/04.html": "كرذوذوس، البطريرك الشجاع الذي دافع بقوة عن تراث الآباء القديسين. ازدادت الاضطهادات في عهده لكنه صمد كالصخرة. لم يخف من السلطات الرومانية بل واصل تقديم التعاليم النقية للشعب. ذكره التاريخ كرجل من فولاذ روحي لا يميل ولا ينحني.",
+      "patriarchs/05.html": "بريموس، قاد الكنيسة بحكمة وشفقة عميقة تجاه جميع الشعب. اهتم برعاية الفقراء والمحتاجين، وكان نموذجاً حياً للرعاية الرسولية الحقة. ثابر على الصلاة والصيام والتأمل الروحي. ترك تراثاً روحياً غنياً أثر على أجيال من المؤمنين والرهبان.",
+      "patriarchs/06.html": "يسطس، البطريرك الذي ازدهرت الكنيسة الإسكندرية تحت قيادته روحياً وإدارياً. كان قائداً قوياً وحكيماً يفهم احتياجات شعبه بعمق. عمل على نشر التعاليم المسيحية الصحيحة وتعميق الإيمان بين جميع المؤمنين. ترك تاريخاً حافلاً بالإنجازات الروحية العظيمة.",
+      "patriarchs/07.html": "أومانيوس، قاد الكنيسة بحزم وعدل حكيم. كان معروفاً بحنانه على شعبه واهتمامه برعاية الضعفاء والمساكين. اهتم بتعليم الكهنة والرهبان وتطوير حياتهم الروحية. ازدهرت الحياة الرهبانية في عهده وترك تراثاً عظيماً من التقاليس الروحية."
+    };
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".patriarch-card");
     const noResults = document.getElementById("noResults");
@@ -2976,17 +2985,17 @@
       const previewButton = document.createElement("button");
       previewButton.type = "button";
       previewButton.className = "preview-button";
-      previewButton.setAttribute("aria-label", "معاينة البطريرك");
-      previewButton.title = "معاينة سريعة";
+      previewButton.setAttribute("aria-label", "قصة البطريرك");
+      previewButton.title = "اقرأ القصة";
       previewButton.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">visibility</span>';
       previewButton.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
-        previewImage.src = cardImage.src;
-        previewImage.alt = cardImage.alt;
-        previewTitle.textContent = card.querySelector("h3").textContent.trim();
-        previewPeriod.textContent = `${card.querySelector("p").textContent.trim()} • ${durationText.textContent}`;
-        previewLink.href = card.getAttribute("href");
+        const href = card.getAttribute("href");
+        const story = patriarchStories[href] || "هذا البطريرك العظيم قاد الكنيسة بحكمة وإيمان، وترك إرثاً روحياً عظيماً أثر على أجيال من المؤمنين. خدم الشعب بحب وتضحية، ودافع عن العقيدة الأرثوذكسية الحقة.";
+        document.getElementById("previewTitle").textContent = card.querySelector("h3").textContent.trim();
+        document.getElementById("previewPeriod").textContent = `${card.querySelector("p").textContent.trim()} • ${durationText.textContent}`;
+        storyContent.textContent = story;
         previewDialog.showModal();
       });
       card.appendChild(previewButton);
