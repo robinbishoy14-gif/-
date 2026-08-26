@@ -1,128 +1,1391 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>البابا شنودة الثالث</title>
+  <title>شنودة الثالث | البطاركة</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Google Material Icons -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0"
+    rel="stylesheet">
 
   <style>
 
-    body {
-      font-family: "Tahoma", sans-serif;
-      background-color: #f9f9f9;
-      direction: rtl;
-      padding: 20px;
-      margin: 0;
-      line-height: 2;
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    :root {
+      --ink: #27343a;
+      --muted: #6d7670;
+
+      --gold: #a97832;
+      --gold-light: #d7b875;
+
+      --paper: rgba(255, 253, 247, 0.94);
+
+      --info-bg: rgba(245, 239, 227, 0.72);
+
+      --line: rgba(93, 72, 39, 0.20);
+
+      --page-tint: rgba(245, 239, 227, 0.30);
+
+      --shadow: rgba(61, 47, 27, 0.18);
+
+      --button-text: #ffffff;
     }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    /* =====================================================
+       BODY
+    ===================================================== */
+
+    body {
+
+      min-height: 100vh;
+
+      margin: 0;
+
+      padding: 40px clamp(12px, 4vw, 65px) 130px;
+
+      direction: rtl;
+
+      color: var(--ink);
+
+      font-family: "Cairo", sans-serif;
+
+      line-height: 2;
+
+      background-color: #f5efe3;
+
+      background-image: url("../background.jpg");
+
+      background-size: cover;
+
+      background-position: center;
+
+      background-attachment: fixed;
+
+      transition:
+        background-color .35s ease,
+        color .35s ease;
+    }
+
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -1;
+
+      background: var(--page-tint);
+
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       MAIN CONTAINER
+    ===================================================== */
 
     .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+      width: min(1000px, 100%);
+
+      margin: 0 auto;
+
+      padding: clamp(20px, 4vw, 45px);
+
+      background: var(--paper);
+
+      border: 1px solid var(--line);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 18px 45px var(--shadow);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      animation:
+        pageEnter .8s cubic-bezier(.34,1.56,.64,1) both;
     }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .page-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 25px;
+
+      margin-bottom: 25px;
+
+      text-align: center;
+    }
+
+
+    .header-side {
+
+      flex: 1;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          to left,
+          transparent,
+          var(--gold-light)
+        );
+    }
+
+
+    .header-side.right {
+
+      background:
+        linear-gradient(
+          to right,
+          transparent,
+          var(--gold-light)
+        );
+    }
+
+
+    .header-content {
+
+      min-width: 300px;
+    }
+
+
+    .header-logo {
+
+      width: 68px;
+
+      height: 68px;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 7px 10px rgba(61,47,27,.18)
+        );
+
+      transition:
+        transform .4s ease,
+        filter .4s ease;
+    }
+
+
+    .header-logo:hover {
+
+      transform:
+        scale(1.1)
+        rotate(3deg);
+
+      filter:
+        drop-shadow(
+          0 12px 15px rgba(61,47,27,.25)
+        );
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
 
     h1 {
+
+      margin: 0;
+
+      color: var(--ink);
+
+      font-family: "Amiri", serif;
+
+      font-size:
+        clamp(36px, 5vw, 56px);
+
+      font-weight: 700;
+
+      line-height: 1.2;
+
       text-align: center;
-      color: #333;
+
+      letter-spacing: .2px;
     }
+
+
+    .subtitle {
+
+      margin: 5px 0 0;
+
+      color: var(--gold);
+
+      font-size: 15px;
+
+      font-weight: 700;
+    }
+
+
+    .motto {
+
+      margin: 0;
+
+      color: var(--muted);
+
+      font-family: "Amiri", serif;
+
+      font-size: 17px;
+    }
+
+
+    /* =====================================================
+       PATRIARCH NUMBER
+    ===================================================== */
 
     .number {
-      text-align: center;
-      color: #777;
-      font-size: 18px;
+
+      width: fit-content;
+
+      margin: 10px auto 30px;
+
+      padding:
+        5px 20px;
+
+      color: var(--gold);
+
+      background:
+        rgba(169,120,50,.08);
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 999px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      animation:
+        badgeFloat 3s ease-in-out infinite;
     }
+
+
+    /* =====================================================
+       IMAGE
+    ===================================================== */
+
+    .image-wrapper {
+
+      position: relative;
+
+      width: min(390px, 100%);
+
+      margin: 0 auto 38px;
+
+      padding: 8px;
+
+      background: var(--paper);
+
+      border: 1px solid var(--line);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 16px 35px var(--shadow);
+
+      overflow: hidden;
+
+      transition:
+        transform .45s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .45s ease;
+    }
+
+
+    .image-wrapper::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      right: 20%;
+
+      width: 60%;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+
+      z-index: 2;
+    }
+
+
+    .image-wrapper:hover {
+
+      transform:
+        translateY(-8px)
+        scale(1.015);
+
+      box-shadow:
+        0 25px 55px rgba(61,47,27,.26);
+    }
+
 
     .patriarch-image {
+
       display: block;
-      width: 300px;
-      height: 350px;
+
+      width: 100%;
+
+      height: 440px;
+
       object-fit: cover;
-      margin: 20px auto;
-      border-radius: 15px;
+
+      object-position: center;
+
+      border-radius: 14px;
+
+      filter:
+        saturate(.92);
+
+      transition:
+        transform .6s cubic-bezier(.34,1.56,.64,1),
+        filter .4s ease;
     }
 
-    h2 {
-      color: #444;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
+
+    .image-wrapper:hover .patriarch-image {
+
+      transform: scale(1.045);
+
+      filter:
+        saturate(1.08)
+        brightness(1.03);
     }
 
-    p {
-      font-size: 18px;
-      color: #333;
-      text-align: justify;
-    }
+
+    /* =====================================================
+       INFO CARD
+    ===================================================== */
 
     .info {
-      background: #f1f1f1;
-      padding: 15px;
-      border-radius: 10px;
-      margin: 20px 0;
+
+      position: relative;
+
+      margin: 30px 0 40px;
+
+      padding: 22px 28px;
+
+      background: var(--info-bg);
+
+      border: 1px solid var(--line);
+
+      border-radius: 16px;
+
+      box-shadow:
+        0 8px 22px var(--shadow);
+
+      overflow: hidden;
+
+      animation:
+        cardEnter .7s .15s both;
     }
+
+
+    .info::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      right: 0;
+
+      width: 5px;
+
+      height: 100%;
+
+      background:
+        linear-gradient(
+          to bottom,
+          var(--gold-light),
+          var(--gold),
+          var(--gold-light)
+        );
+    }
+
+
+    .info p {
+
+      margin: 0;
+
+      padding: 8px 0;
+
+      border-bottom:
+        1px solid rgba(93,72,39,.09);
+
+      font-size: 17px;
+
+      text-align: right;
+    }
+
+
+    .info p:last-child {
+
+      border-bottom: none;
+    }
+
+
+    .info strong {
+
+      color: var(--gold);
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       SECTIONS
+    ===================================================== */
+
+    h2 {
+
+      position: relative;
+
+      margin:
+        45px 0 20px;
+
+      padding-bottom: 9px;
+
+      color: var(--ink);
+
+      font-family: "Amiri", serif;
+
+      font-size: 31px;
+
+      font-weight: 700;
+
+      line-height: 1.4;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    h2::after {
+
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+
+      bottom: -2px;
+
+      width: 90px;
+
+      height: 3px;
+
+      background:
+        linear-gradient(
+          to left,
+          var(--gold),
+          var(--gold-light)
+        );
+
+      border-radius: 10px;
+    }
+
+
+    p {
+
+      color: var(--ink);
+
+      font-size: 17px;
+
+      line-height: 2.2;
+
+      text-align: justify;
+
+      padding: 4px 10px;
+
+      border-radius: 8px;
+
+      transition: background-color 0.3s ease, border 0.3s ease;
+    }
+
+    p.active-reading, h2.active-reading {
+
+      background-color: rgba(169, 120, 50, 0.12);
+
+      border-right: 4px solid var(--gold);
+    }
+
+
+    /* =====================================================
+       YOUTUBE-STYLE AUDIO PLAYER
+    ===================================================== */
+
+    .yt-player-bar {
+
+      position: fixed;
+
+      bottom: 20px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(750px, 92%);
+
+      z-index: 200;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+      padding: 12px 22px;
+
+      background: var(--paper);
+
+      border: 1px solid var(--line);
+
+      border-radius: 16px;
+
+      box-shadow: 0 12px 30px var(--shadow);
+
+      backdrop-filter: blur(12px);
+
+      -webkit-backdrop-filter: blur(12px);
+
+      direction: ltr;
+    }
+
+    .yt-player-controls {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+    }
+
+    .yt-btn {
+
+      background: none;
+
+      border: none;
+
+      color: var(--gold);
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 50%;
+
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .yt-btn:hover {
+
+      background: rgba(169, 120, 50, 0.14);
+
+      transform: scale(1.06);
+    }
+
+    .yt-btn span {
+
+      font-size: 34px;
+    }
+
+    .yt-time {
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      color: var(--ink);
+
+      min-width: 90px;
+
+      font-family: monospace;
+
+      user-select: none;
+    }
+
+    .yt-progress-container {
+
+      flex: 1;
+
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      height: 18px;
+
+      cursor: pointer;
+    }
+
+    .yt-progress-track {
+
+      position: absolute;
+
+      width: 100%;
+
+      height: 5px;
+
+      background: rgba(100, 100, 100, 0.25);
+
+      border-radius: 4px;
+
+      overflow: hidden;
+    }
+
+    .yt-progress-fill {
+
+      height: 100%;
+
+      width: 0%;
+
+      background: var(--gold);
+
+      border-radius: 4px;
+
+      transition: width 0.1s linear;
+    }
+
+    .yt-progress-scrubber {
+
+      position: absolute;
+
+      top: 50%;
+
+      left: 0%;
+
+      width: 14px;
+
+      height: 14px;
+
+      background: var(--gold);
+
+      border-radius: 50%;
+
+      transform: translate(-50%, -50%) scale(0);
+
+      transition: transform 0.15s ease;
+
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    .yt-progress-container:hover .yt-progress-scrubber {
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .yt-progress-container:hover .yt-progress-track {
+
+      height: 7px;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
 
     .buttons {
+
       display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-top: 50px;
+
+      padding-top: 28px;
+
+      border-top:
+        1px solid var(--line);
     }
+
 
     .buttons a {
-      background: #333;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-width: 155px;
+
+      padding:
+        11px 24px;
+
+      color: var(--button-text);
+
+      background: var(--gold);
+
+      border:
+        1px solid var(--gold);
+
+      border-radius: 10px;
+
       text-decoration: none;
-      font-size: 16px;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 18px rgba(169,120,50,.22);
+
+      transition:
+        transform .25s cubic-bezier(.34,1.56,.64,1),
+        background .25s ease,
+        box-shadow .25s ease;
     }
 
+
     .buttons a:hover {
-      background: #555;
+
+      transform:
+        translateY(-5px);
+
+      background: #8f6327;
+
+      box-shadow:
+        0 14px 28px rgba(169,120,50,.32);
+    }
+
+
+    .buttons a:active {
+
+      transform:
+        scale(.95);
+    }
+
+
+    /* =====================================================
+       THEME BUTTON
+    ===================================================== */
+
+    .theme-toggle {
+
+      position: fixed;
+
+      top: 20px;
+
+      left: 20px;
+
+      z-index: 100;
+
+      width: 48px;
+
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--gold);
+
+      background: var(--paper);
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px var(--shadow);
+
+      transition:
+        transform .3s cubic-bezier(.34,1.56,.64,1),
+        background .25s ease;
+    }
+
+
+    .theme-toggle:hover {
+
+      transform:
+        translateY(-4px)
+        rotate(15deg)
+        scale(1.08);
+    }
+
+
+    .theme-toggle .dark-icon {
+
+      display: none;
+    }
+
+
+    body.dark-mode
+    .theme-toggle
+    .light-icon {
+
+      display: none;
+    }
+
+
+    body.dark-mode
+    .theme-toggle
+    .dark-icon {
+
+      display: inline;
+    }
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    .back-to-top {
+
+      position: fixed;
+
+      right: 20px;
+
+      bottom: 95px;
+
+      z-index: 100;
+
+      width: 48px;
+
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: var(--gold);
+
+      background: var(--paper);
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px var(--shadow);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transform:
+        translateY(20px);
+
+      transition:
+        opacity .3s ease,
+        transform .3s ease,
+        background .25s ease,
+        color .25s ease;
+    }
+
+
+    .back-to-top.show {
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+      transform:
+        translateY(0);
+    }
+
+
+    .back-to-top:hover {
+
+      color: white;
+
+      background: var(--gold);
+
+      transform:
+        translateY(-5px)
+        scale(1.08);
+    }
+
+
+    /* =====================================================
+       DARK MODE
+    ===================================================== */
+
+    body.dark-mode {
+
+      --ink: #f1e8d8;
+
+      --muted: #c0b7a8;
+
+      --gold: #e0b968;
+
+      --gold-light: #c99a4d;
+
+      --paper: rgba(27,33,36,.94);
+
+      --info-bg: rgba(33,39,42,.82);
+
+      --line: rgba(224,185,104,.27);
+
+      --page-tint: rgba(8,12,14,.78);
+
+      --shadow: rgba(0,0,0,.42);
+
+      --button-text: #171717;
+
+      background-color: #121719;
+    }
+
+
+    body.dark-mode
+    .container > p:hover {
+
+      color: #f0e8da;
+    }
+
+
+    body.dark-mode
+    .buttons a:hover {
+
+      background: var(--gold-light);
+    }
+
+
+    /* =====================================================
+       SCROLLBAR
+    ===================================================== */
+
+    ::-webkit-scrollbar {
+
+      width: 10px;
+    }
+
+
+    ::-webkit-scrollbar-track {
+
+      background:
+        rgba(169,120,50,.08);
+    }
+
+
+    ::-webkit-scrollbar-thumb {
+
+      background:
+        var(--gold);
+
+      border-radius: 20px;
+    }
+
+
+    ::-webkit-scrollbar-thumb:hover {
+
+      background:
+        #8f6327;
+    }
+
+
+    /* =====================================================
+       ANIMATIONS
+    ===================================================== */
+
+    @keyframes pageEnter {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(30px)
+          scale(.98);
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+    }
+
+
+    @keyframes cardEnter {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(25px);
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    @keyframes badgeFloat {
+
+      0%,
+      100% {
+
+        transform:
+          translateY(0);
+      }
+
+      50% {
+
+        transform:
+          translateY(-4px);
+      }
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 700px) {
+
+      body {
+
+        padding:
+          25px 10px 140px;
+      }
+
+
+      .container {
+
+        padding:
+          20px 15px;
+
+        border-radius: 15px;
+      }
+
+
+      .page-header {
+
+        display: block;
+      }
+
+
+      .header-side {
+
+        display: block;
+
+        width: 90px;
+
+        height: 1px;
+
+        margin:
+          14px auto;
+      }
+
+
+      .header-content {
+
+        min-width: 0;
+      }
+
+
+      .header-logo {
+
+        width: 60px;
+
+        height: 60px;
+
+        margin:
+          5px;
+      }
+
+
+      h1 {
+
+        font-size: 39px;
+      }
+
+
+      .subtitle {
+
+        font-size: 13px;
+      }
+
+
+      .motto {
+
+        font-size: 15px;
+      }
+
+
+      .number {
+
+        font-size: 13px;
+      }
+
+
+      .patriarch-image {
+
+        height: 390px;
+      }
+
+
+      .info {
+
+        padding:
+          15px 20px;
+      }
+
+
+      .info p {
+
+        font-size: 15px;
+
+        line-height: 2;
+      }
+
+
+      h2 {
+
+        margin-top: 38px;
+
+        font-size: 27px;
+      }
+
+
+      p {
+
+        font-size: 16px;
+
+        line-height: 2.15;
+
+        text-align: right;
+      }
+
+
+      .buttons {
+
+        flex-direction: column;
+
+        gap: 10px;
+      }
+
+
+      .buttons a {
+
+        width: 100%;
+      }
+
+
+      .theme-toggle {
+
+        top: 10px;
+
+        left: 10px;
+
+        width: 43px;
+
+        height: 43px;
+      }
+
+
+      .back-to-top {
+
+        right: 10px;
+
+        bottom: 100px;
+
+        width: 43px;
+
+        height: 43px;
+      }
     }
 
   </style>
 
 </head>
 
+
 <body>
+
+
+  <!-- DARK MODE BUTTON -->
+
+  <button
+    type="button"
+    id="themeToggle"
+    class="theme-toggle"
+    title="تغيير الوضع"
+    aria-label="تغيير الوضع">
+
+    <span class="material-symbols-outlined light-icon">
+      dark_mode
+    </span>
+
+    <span class="material-symbols-outlined dark-icon">
+      light_mode
+    </span>
+
+  </button>
+
+
+
+  <!-- MAIN -->
 
   <div class="container">
 
-    <h1>
-      البابا شنودة الثالث
-    </h1>
+
+    <!-- HEADER -->
+
+    <header class="page-header">
+
+      <div class="header-side right"></div>
+
+      <img
+        src="../images/logo1.png"
+        class="header-logo"
+        alt="شعار الكنيسة">
+
+      <div class="header-content">
+
+        <h1>
+          شنودة الثالث
+        </h1>
+
+        <div class="subtitle">
+          بابا الإسكندرية وبطريرك الكرازة المرقسية
+        </div>
+
+        <div class="motto">
+          "ليس اسم أعظم من المسيح"
+        </div>
+
+      </div>
+
+      <img
+        src="../images/logo2.png"
+        class="header-logo"
+        alt="شعار الكنيسة">
+
+      <div class="header-side"></div>
+
+    </header>
+
+
+
+    <!-- NUMBER -->
 
     <div class="number">
       البطريرك رقم 117
     </div>
 
-    <img
-      src="../images/شنودة الثالث.jpg"
-      alt="البابا شنودة الثالث"
-      class="patriarch-image"
-    >
+
+
+    <!-- IMAGE -->
+
+    <div class="image-wrapper">
+
+      <img
+        src="../images/شنودة الثالث.jpg"
+        alt="شنودة الثالث"
+        class="patriarch-image">
+
+    </div>
+
+
+
+    <!-- BASIC INFORMATION -->
 
     <div class="info">
 
       <p>
         <strong>الاسم قبل الرهبنة:</strong>
-        نظير جيد روفائيل
+        ناظر جيد روفائيل
       </p>
 
       <p>
         <strong>الاسم الرهباني:</strong>
-        الراهب أنطونيوس السرياني
+        الأنبا أنطونيوس السرياني
       </p>
 
       <p>
         <strong>الاسم البابوي:</strong>
-        شنودة الثالث
-      </p>
+        شنودة الثالث</p>
 
       <p>
         <strong>رقم البطريرك:</strong>
@@ -141,97 +1404,141 @@
 
       <p>
         <strong>مكان الميلاد:</strong>
-        قرية سلام، محافظة أسيوط، مصر
+        مدينة أسيوط، مصر
       </p>
 
       <p>
         <strong>الخدمة البطريركية:</strong>
-        من سنة 1971م حتى 2012م
-      </p>
+        من سنة 1971م إلى سنة 2012م</p>
 
     </div>
 
 
-    <h2>ميلاده ونشأته</h2>
+
+    <!-- BIRTH -->
+
+    <h2>
+      ميلاده ونشأته
+    </h2>
 
     <p>
-      وُلِد البابا شنودة الثالث (نظير جيد) في 3 أغسطس سنة 1923م بقرية سلام بمحافظة أسيوط.
+      وُلِد البابا شنودة الثالث في 3 أغسطس سنة 1923م ب مدينة أسيوط في صعيد مصر، ونشأ في أسرة مسيحية محبة للكنيسة.
     </p>
 
     <p>
-      توفيت والدته عقب ولادته، فتربى في رعاية إخوته الكبار، ونشأ في أسرة تقية محبة للكنيسة.
+      كان منذ صغره محبًا للقراءة والمعرفة، وتميز بذكائه وحبه للعلم والتعلم.
     </p>
 
     <p>
-      تلقى تعليمه في مراحل مختلفة، ثم حصل على ليسانس الآداب قسم التاريخ من جامعة فؤاد الأول (جامعة القاهرة حاليًا) سنة 1947م.
+      درس في المدارس والجامعات، ثم حصل على بكالوريوس الآداب من جامعة القاهرة سنة 1947م، كما حصل على إجازة المعلمين.
     </p>
 
     <p>
-      كما درس بالكلية الاكليريكية وتخرج فيها سنة 1949م، وكان شغوفًا بالتعلم والقراءة والكتابة والبحث الروحي.
+      وبعد تخرجه عمل في مجال التعليم، وكان معلمًا للغة الإنجليزية، لكنه ظل مرتبطًا بالكنيسة والخدمة الروحية.
     </p>
 
 
-    <h2>خدمته قبل الرهبنة</h2>
+
+    <!-- BEFORE MONASTICISM -->
+
+    <h2>
+      خدمته قبل الرهبنة
+    </h2>
 
     <p>
-      خدم نيافته في مدارس الأحد بجمعية النهضة الروحية وشبرا، وكان له نشاط بارز في خدمة الشباب والتعليم الكنسي.
+      خدم البابا شنودة الثالث في الكنيسة قبل رهبنته، وكان يهتم بخدمة الشباب والتعليم والخدمة الكنسية.
     </p>
 
     <p>
-      عمل أستاذًا للإكليريكية وللعديد من المعاهد اللاهوتية، كما خدم ضابطًا بالجيش المصري.
+      كان محبًا للقراءة والدراسة، واهتم بالعلوم الروحية والكتاب المقدس واللاهوت.
     </p>
 
     <p>
-      تميز بمهارته الأدبية والإنشائية، وعمل رئيسًا لتحرير مجلة "مدارس الأحد" لعدة سنوات.
-    </p>
-
-
-    <h2>رهبنته وتوحده</h2>
-
-    <p>
-      في 18 يوليو 1954م ترك العالم وذهب إلى دير السيدة العذراء مريم (السريان) بوادي النطرون.
+      وكانت له مشاركات في كتابة المقالات والشعر الروحي، وكان يمتلك موهبة أدبية وخطابية بارزة.
     </p>
 
     <p>
-      وترهب باسم الراهب أنطونيوس السرياني، وعاش حياة النسك والصلوات الممتدة والتأمل الكنسي.
-    </p>
-
-    <p>
-      سِيمَ كاهنًا سنة 1955م، ثم عاش فترة طويلة متوحدًا في مغارة بالصحراء بعيدًا عن الدير طلباً للهدوء والتوحد مع الله.
+      وكانت خدمته قبل الرهبنة إعدادًا روحيًا وفكريًا كبيرًا للمرحلة التالية من حياته.
     </p>
 
 
-    <h2>سيامته أسقفًا</h2>
+
+    <!-- MONASTICISM -->
+
+    <h2>
+      رهبنته
+    </h2>
 
     <p>
-      في 30 سبتمبر 1962م قام قداسة البابا كيرلس السادس بسيامته أسقفًا للتعليم المسيحي والبحث العلمي والكلية الإكليريكية باسم الأنبا شنودة.
+      في سنة 1954م ترك العالم وذهب إلى دير السريان بوادي النطرون، طالبًا حياة الرهبنة والتكريس.
     </p>
 
     <p>
-      نهض بالكلية الإكليريكية وأسس معاهد لاهوتية جديدة، وبدأ إلقاء اجتماعه الأسبوعي الشهير للوعظ والتعليم.
+      وترهب باسم الأنبا أنطونيوس السرياني، وعاش حياة الرهبنة في الصلاة والصوم والنسك والتأمل.
     </p>
 
     <p>
-      أصدر العديد من الكتب والمؤلفات الروحية واللاهوتية التي غطت شتى مجالات الحياة المسيحية.
-    </p>
-
-
-    <h2>اختياره بطريركًا</h2>
-
-    <p>
-      بعد نياحة البابا كيرلس السادس في مارس 1971م، أجريت انتخابات الترشيح البابوي.
+      أثناء حياته الرهبانية، كان يهتم بالقراءة والكتابة والتأمل، وألف العديد من الكتب والمقالات الروحية.
     </p>
 
     <p>
-      تم اختيار ثلاثة مرشحين للقرعة الهيكلية، وكان من بينهم الأسقف الأنبا شنودة.
+      وبعد فترة من الاختبار الرهباني، تمت سيامته كاهنًا ثم قمصًا.
+    </p>
+
+
+
+    <!-- BISHOP -->
+
+    <h2>
+      سيامته أسقفًا
+    </h2>
+
+    <p>
+      في سنة 1962م قام قداسة البابا كيرلس السادس بسيامته أسقفًا للتعليم والمعاهد اللاهوتية باسم الأنبا شنودة.
+    </p>
+
+      <p>
+      وكان أول أسقف للتعليم في الكنيسة القبطية الأرثوذكسية، وأسندت إليه مسؤولية المعاهد اللاهوتية ومدارس الأحد.
     </p>
 
     <p>
-      وفي يوم الأحد 31 أكتوبر 1971م، أُجريت القرعة الهيكلية بالكاتدرائية المرقسية بالعباسية، ووقع الاختيار الإلهي عليه.
+      وكان يهتم بتعليم الشباب والخدام والكهنة، كما اهتم بالخدمة الروحية والتعليمية في جميع أنحاء الكنيسة.
     </p>
 
     <p>
-      صبح اسمه البابوي:
+      وخلال سنوات خدمته كأسقف للتعليم، أصبح معروفًا بالعلم والمعرفة والفصاحة والقدرة على الشرح والتوضيح.
+    </p>
+
+
+
+    <!-- PATRIARCH -->
+
+    <h2>
+      اختياره بطريركًا
+    </h2>
+
+    <p>
+      بعد نياحة قداسة البابا كيرلس السادس في مارس سنة 1971م، بدأت إجراءات اختيار البطريرك الجديد للكنيسة القبطية الأرثوذكسية.
+    </p>
+
+    <p>
+      تم اختيار ثلاثة مرشحين لإجراء القرعة الهيكلية، وكان من بينهم الأنبا شنودة.
+    </p>
+
+    <p>
+      وفي يوم الأحد 31 أكتوبر سنة 1971م، أُجريت القرعة الهيكلية في الكاتدرائية المرقسية بالعباسية.
+    </p>
+
+    <p>
+      وقام طفل صغير بسحب الورقة التي تحمل اسم الأنبا شنودة.
+    </p>
+
+    <p>
+      وهكذا تم اختيار الأنبا شنودة ليكون البابا رقم 117 على الكرسي المرقسي.
+    </p>
+
+    <p>
+      وأصبح اسمه البابوي:
     </p>
 
     <p>
@@ -241,117 +1548,260 @@
     </p>
 
 
-    <h2>تجليسه على الكرسي المرقسي</h2>
+
+    <!-- ENTHRONEMENT -->
+
+    <h2>
+      تجليسه على الكرسي المرقسي
+    </h2>
 
     <p>
-      تم تجليس قداسة البابا شنودة الثالث على الكرسي المرقسي في 14 نوفمبر سنة 1971م.
+      تم تجليس قداسة البابا شنودة الثالث في الكاتدرائية المرقسية الكبرى بالعباسية يوم 14 نوفمبر سنة 1971م.
     </p>
 
     <p>
-      شهد حفل التجليس حضورًا رسميًا وشعبيًا وكنائسيًا حاشدًا من مصر وكافة دول العالم.
+      وحضر التجليس عدد كبير من الآباء المطارنة والأساقفة والكهنة والشعب القبطي.
     </p>
 
     <p>
-      ومنذ بداية جلوسه، بدأ حبرية مباركة حافلة بالبناء والرعاية والتعلم والتعمير.
+      ومنذ ذلك الوقت بدأ البابا شنودة الثالث خدمته الرعوية للكنيسة القبطية الأرثوذكسية في مصر والعالم.
     </p>
 
 
-    <h2>اهتمامه بالتعليم والوعظ</h2>
+
+    <!-- CHURCH -->
+
+    <h2>
+      اهتمامه بخدمة الكنيسة
+    </h2>
 
     <p>
-      لُقّب قداسة البابا شنودة الثالث بـ "معلم الأجيال" نظير عطائه التعليمي الممتد لعقود.
-    </p>
-
-    <p>
-      واظب على محاضرته الأسبوعية لسنوات طويلة، يحضرها الآلاف وتعرض عبر الوسائل الإعلامية.
-    </p>
-
-    <p>
-      ألّف أكثر من 140 كتابًا شملت اللاهوت، والتفسير، والروحيات، والأخلاق، والسنكسار، والشعر الكنسي.
-    </p>
-
-
-    <h2>اهتمامه بالشباب والمهجر</h2>
-
-    <p>
-      توسعت الكنيسة القبطية الأرثوذكسية في عهده بشكل غير مسبوق في أراضي المهجر بأمريكا وأوروبا وأستراليا وآسيا وأفريقيا.
+      اهتم قداسة البابا شنودة الثالث بخدمة الكنيسة في مصر وخارجها، وبخدمة الأقباط في مختلف البلاد.
     </p>
 
     <p>
-      أنشأ مئات الكنائس والإيبارشيات والمجالس الرعوية خارج مصر، وسام أساقفة ورسامة كاهنًا للرعاية.
+      كما اهتم بتأسيس وتنظيم الكنائس والخدمات في البلاد التي يوجد بها أقباط، وتشجيع الخدمة الروحية والتعليمية.
     </p>
 
     <p>
-      اهتم بمؤتمرات الشباب والطفولة وشجع الطاقات الشابة في كافة مجالات الخدمة.
-    </p>
-
-
-    <h2>تعمير الأديرة والرهبنة</h2>
-
-    <p>
-      شهدت حركة الرهبنة في عهده نهضة كبرى، حيث قام بتعمير العديد من الأديرة الأثرية وتأسيس أديرة جديدة في مصر والمهجر.
+      ويحرص على زيارة الإيبارشيات والكنائس، والالتقاء بالشعب والخدام والكهنة.
     </p>
 
     <p>
-      سيَّم مئات الرهبان والراهبات والأساقفة للخدمة والرعاية الكنسية.
+      وفي عهده توسعت الكنيسة القبطية الأرثوذكسية في العديد من دول العالم، وأسست كنائس وإيبارشيات جديدة.
+    </p>
+
+
+
+    <!-- YOUTH -->
+
+    <h2>
+      اهتمامه بالشباب
+    </h2>
+
+    <p>
+      يولي قداسة البابا شنودة الثالث اهتمامًا كبيرًا بخدمة الشباب، لأن الشباب هم مستقبل الكنيسة.
     </p>
 
     <p>
-      كان يحرص على قضاء أيام من كل أسبوع في دير الأنبا بيشوي بوادي النطرون للراحة والصلاة والعمل الكنسي.
-    </p>
-
-
-    <h2>العلاقات مع الكنائس والحوار اللاهوتي</h2>
-
-    <p>
-      قاد البابا شنودة الثالث حركة حوار لاهوتي واسعة مع مختلف العائلات الكنسية (الكاثوليكية، الأرثوذكسية البيزنطية، البروتستانتية).
+      ويشجع على التعليم والحوار والمحبة وخدمة المجتمع.
     </p>
 
     <p>
-      زار الفاتيكان والتقى ببابا روما، ووقع بيانات لاهوتية مشتركة تنهي الخلافات التاريخية.
+      كما يهتم بالأنشطة الروحية والثقافية والتعليمية التي تساعد الشباب على النمو في الإيمان والمعرفة.
     </p>
 
     <p>
-      كان رئيسًا لمجلس كنائس الشرق الأوسط وعضوًا بارزًا في مجلس الكنائس العالمي.
+      كان يقيم اجتماعات أسبوعية للشباب في الكاتدرائية المرقسية، يحضرها الآلاف من الشباب والشابات.
     </p>
 
 
-    <h2>صفاته الروحية وآثاره</h2>
+
+    <!-- EDUCATION -->
+
+    <h2>
+      اهتمامه بالتعليم
+    </h2>
 
     <p>
-      تميز بالعمل الوطنية الراسخة، والحكمة الشديدة، وقوة الشخصية، وسرعة البديهة والروح المرحة.
-    </p>
-
-    <p>
-      عرف بمواقفه الوطنية الخالدة ومقولته الشهيرة: "مصر ليست وطنًا نعيش فيه، بل وطن يعيش فينا".
-    </p>
-
-    <p>
-      كان شاعرًا وكاتبًا وبليغًا، ترك بصمة عميقة في تاريخ الكنيسة القبطية الحديث.
-    </p>
-
-
-    <h2>نياحته</h2>
-
-    <p>
-      بعد مسيرة حافلة بالخدمة والعطاء استمرت أكثر من 40 عامًا على الكرسي المرقسي، تنيح البابا شنودة الثالث في 17 مارس سنة 2012م.
+      يهتم قداسة البابا بالتعليم الكنسي، ومدارس الأحد، والمعاهد اللاهوتية، وخدمة الكتاب المقدس.
     </p>
 
     <p>
-      ودعته جموع الشعب المصري والعالم في جنازة مهيبة، ووُضع جثمانه المبارك في مدفنه الخاص بدير الأنبا بيشوي بوادي النطرون حسب وصيته.
-    </p>
-
-
-    <h2>صلاة</h2>
-
-    <p>
-      نطلب من الله أن ينفعنا بصلوات قداسة البابا شنودة الثالث، وأن يعيننا على التمسك بالإيمان المستقيم والتعليم الصالح.
+      ويشجع أبناء الكنيسة على الدراسة والبحث وطلب المعرفة.
     </p>
 
     <p>
-      بركة صلواته تكون معنا جميعًا. آمين.
+      كما يؤكد دائمًا أهمية أن يجمع الإنسان بين الإيمان والعلم والعمل الصالح.
     </p>
 
+    <p>
+      وفي عهده ازداد عدد المعاهد اللاهوتية والكليات الإكليريكية في مصر وخارجها.
+    </p>
+
+
+
+    <!-- PASTORAL -->
+
+    <h2>
+      خدمته الرعوية
+    </h2>
+
+    <p>
+      يقوم قداسة البابا شنودة الثالث برعاية الكنيسة من خلال متابعة الإيبارشيات والكنائس والخدمات المختلفة.
+    </p>
+
+    <p>
+      ويهتم بأحوال الشعب، ويشارك في الصلوات والقداسات والمناسبات الكنسية.
+    </p>
+
+    <p>
+      كما يعمل مع الآباء المطارنة والأساقفة والكهنة في خدمة الشعب القبطي في مصر وجميع أنحاء العالم.
+    </p>
+
+    <p>
+      كان يقوم بزيارات رعوية منتظمة للإيبارشيات في مصر وخارجها، ويزور الكنائس والكنائس والأديرة.
+    </p>
+
+
+
+    <!-- CHURCH RELATIONS -->
+
+    <h2>
+      العلاقات مع الكنائس
+    </h2>
+
+    <p>
+      يهتم قداسة البابا شنودة الثالث بالعلاقات مع الكنائس المسيحية المختلفة.
+    </p>
+
+    <p>
+      ويشجع على المحبة والتعاون والحوار بين الكنائس، مع الحفاظ على الإيمان والتقاليد الأرثوذكسية.
+    </p>
+
+    <p>
+      كما يلتقي بعدد من رؤساء الكنائس والقادة الدينيين في مصر وخارجها.
+    </p>
+
+    <p>
+      وفي عهده تحسنت العلاقات بين الكنيسة القبطية الأرثوذكسية والكنائس الأخرى، وشارك في العديد من الحوارات المسكونية.
+    </p>
+
+
+
+    <!-- EGYPT -->
+
+    <h2>
+      خدمته في مصر
+    </h2>
+
+    <p>
+      يخدم قداسة البابا شنودة الثالث الكنيسة القبطية الأرثوذكسية في مصر، ويتابع احتياجات الشعب والخدمات المختلفة.
+    </p>
+
+    <p>
+      ويهتم بخدمة الفقراء والمحتاجين، وبخدمة المرضى والأسر والشباب والأطفال.
+    </p>
+
+    <p>
+      كما يشجع أبناء الكنيسة على المحبة والوحدة وخدمة الوطن.
+    </p>
+
+    <p>
+      وكان له مواقف وطنية مشهودة، ودعم العلاقة بين الكنيسة والدولة والمجتمع.
+    </p>
+
+
+
+    <!-- WRITINGS -->
+
+    <h2>
+      كتاباته وآثاره
+    </h2>
+
+    <p>
+      للبابا شنودة الثالث آثار كتابية وعظيمة غزيرة، تشمل كتب ومقالات وقصائد روحية.
+    </p>
+
+    <p>
+      ألف أكثر من مائة كتاب في مواضيع روحية ولاهوتية وكتابية متنوعة.
+    </p>
+
+    <p>
+      كما كان يلقي عظات أسبوعية في الكاتدرائية المرقسية، كانت تُذاع وتُنشر وتصل إلى الآلاف من الناس.
+    </p>
+
+    <p>
+      وكانت كتاباته وعظاته تمتاز بالعمق الروحي والوضوح والبساطة، وتخاطب العقل والقلب معًا.
+    </p>
+
+
+
+    <!-- SPIRITUAL -->
+
+    <h2>
+      صفاته الروحية
+    </h2>
+
+    <p>
+      يتميز قداسة البابا شنودة الثالث بالعلم والمعرفة والفصاحة والمحبة والحكمة.
+    </p>
+
+    <p>
+      ويحرص على حياة الصلاة والقراءة والتأمل، كما يشجع الشعب دائمًا على التمسك بالإيمان والرجاء والمحبة.
+    </p>
+
+    <p>
+      ويؤكد أهمية أن يعيش الإنسان حياة مسيحية حقيقية تقوم على الصلاة والتوبة وخدمة الآخرين.
+    </p>
+
+    <p>
+      كان يمتاز بالشجاعة والثبات في الإيمان، والدفاع عن الكنيسة وشعبها.
+    </p>
+
+
+
+    <!-- DEPARTURE -->
+
+    <h2>
+      نياحته
+    </h2>
+
+    <p>
+      في 17 مارس سنة 2012م، نيح قداسة البابا شنودة الثالث عن العالم، عن عمر يناهز 88 عامًا.
+    </p>
+
+    <p>
+      وكانت نياحته بعد خدمة بطريركية استمرت أكثر من 40 عامًا، قضاها في خدمة الكنيسة وشعبها.
+    </p>
+
+    <p>
+      ودفن جسده في دير الأنبا بيشوي بوادي النطرون، حسب وصيته.
+    </p>
+
+    <p>
+      وكانت نياحته مناسبة حزن كبير للأقباط في مصر والعالم، وأقيمت صلوات الجنازة في الكاتدرائية المرقسية بالعباسية.
+    </p>
+
+
+
+    <!-- PRAYER -->
+
+    <h2>
+      صلاة
+    </h2>
+
+    <p>
+      نطلب من الله أن يرقد قداسة البابا شنودة الثالث في ملكوته السماوي، ويعطيه نياحة ورضى.
+    </p>
+
+    <p>
+      بركة صلواته وخدمته تكون معنا جميعًا. آمين.
+    </p>
+
+
+
+    <!-- NAVIGATION -->
 
     <div class="buttons">
 
@@ -369,7 +1819,293 @@
 
     </div>
 
+
   </div>
+
+
+
+  <!-- YOUTUBE AUDIO PLAYER BAR -->
+
+  <div class="yt-player-bar">
+    <div class="yt-player-controls">
+
+      <button id="ytPlayBtn" class="yt-btn" title="تشغيل / إيقاف">
+        <span class="material-symbols-outlined" id="ytPlayIcon">play_arrow</span>
+      </button>
+
+      <div class="yt-time" id="ytTimeDisplay">00:00 / 00:00</div>
+
+      <div class="yt-progress-container" id="ytProgressContainer">
+        <div class="yt-progress-track">
+          <div class="yt-progress-fill" id="ytProgressFill"></div>
+        </div>
+        <div class="yt-progress-scrubber" id="ytScrubber"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- BACK TO TOP -->
+
+  <button
+    type="button"
+    id="backToTop"
+    class="back-to-top"
+    title="العودة إلى الأعلى"
+    aria-label="العودة إلى الأعلى">
+
+    <span class="material-symbols-outlined">
+      arrow_upward
+    </span>
+
+  </button>
+
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* =====================================================
+       DARK MODE
+    ===================================================== */
+
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("shenouda-theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("shenouda-theme", isDark ? "dark" : "light");
+    });
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backToTop = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 450) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+
+    /* =====================================================
+       IMAGE FALLBACK
+    ===================================================== */
+
+    document.querySelectorAll("img").forEach(img => {
+      img.addEventListener("error", () => {
+        if (img.classList.contains("header-logo")) {
+          img.style.display = "none";
+        }
+      });
+    });
+
+
+    /* =====================================================
+       EGYPTIAN MALE AUDIO SPEECH PLAYER
+    ===================================================== */
+
+    const synth = window.speechSynthesis;
+    const playBtn = document.getElementById("ytPlayBtn");
+    const playIcon = document.getElementById("ytPlayIcon");
+    const timeDisplay = document.getElementById("ytTimeDisplay");
+    const progressFill = document.getElementById("ytProgressFill");
+    const scrubber = document.getElementById("ytScrubber");
+    const progressContainer = document.getElementById("ytProgressContainer");
+
+    const textElements = Array.from(document.querySelectorAll(".container h2, .container p"));
+
+    let isPlaying = false;
+    let currentIndex = 0;
+    let currentUtterance = null;
+    let selectedVoice = null;
+    let totalCharCount = 0;
+    let estimatedTotalTime = 0;
+
+    // Calculate total character length
+    textElements.forEach(el => totalCharCount += el.textContent.trim().length);
+    
+    // Average reading rate for natural Egyptian cadence (~10.5 chars/sec)
+    estimatedTotalTime = Math.ceil(totalCharCount / 10.5);
+
+    // Target Egyptian Arabic Male Voice Specifically
+    function loadVoices() {
+      const voices = synth.getVoices();
+      
+      // Tiered search: 1. Egyptian Arabic Male -> 2. Egyptian Arabic -> 3. Generic Arabic Male -> 4. Standard Arabic
+      const egMalePriority = ["ar-eg", "egypt", "shakir", "hamed", "nizar", "tarik", "male", "ذكر"];
+      
+      selectedVoice = voices.find(v => 
+        (v.lang.toLowerCase() === "ar-eg" || v.lang.toLowerCase() === "ar_eg") && 
+        egMalePriority.some(p => v.name.toLowerCase().includes(p))
+      )
+      || voices.find(v => v.lang.toLowerCase().includes("ar-eg") || v.lang.toLowerCase().includes("ar_eg"))
+      || voices.find(v => v.lang.startsWith("ar") && egMalePriority.some(p => v.name.toLowerCase().includes(p)))
+      || voices.find(v => v.lang.startsWith("ar"))
+      || null;
+    }
+
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    loadVoices();
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function updateTimeDisplay(currentTime) {
+      timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(estimatedTotalTime)}`;
+    }
+
+    function updateProgress(progressPercent) {
+      progressFill.style.width = `${progressPercent}%`;
+      scrubber.style.left = `${progressPercent}%`;
+      const currentSeconds = Math.floor((progressPercent / 100) * estimatedTotalTime);
+      updateTimeDisplay(currentSeconds);
+    }
+
+    function clearHighlights() {
+      document.querySelectorAll(".active-reading").forEach(el => el.classList.remove("active-reading"));
+    }
+
+    function speakNextIndex(index) {
+      if (index >= textElements.length) {
+        stopAudio();
+        return;
+      }
+
+      currentIndex = index;
+      const el = textElements[currentIndex];
+
+      clearHighlights();
+      el.classList.add("active-reading");
+
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      currentUtterance = new SpeechSynthesisUtterance(el.textContent.trim());
+      
+      if (selectedVoice) {
+        currentUtterance.voice = selectedVoice;
+      }
+
+      currentUtterance.lang = 'ar-EG'; // Force Egyptian dialect locale
+      currentUtterance.rate = 0.90;    // Calm, natural Egyptian narration rate
+      currentUtterance.pitch = 0.88;   // Lower male vocal resonance
+
+      currentUtterance.onboundary = (event) => {
+        let prevChars = 0;
+        for (let i = 0; i < currentIndex; i++) {
+          prevChars += textElements[i].textContent.trim().length;
+        }
+        const progressChars = prevChars + event.charIndex;
+        const progressPercent = Math.min(100, (progressChars / totalCharCount) * 100);
+        updateProgress(progressPercent);
+      };
+
+      currentUtterance.onend = () => {
+        if (isPlaying) {
+          speakNextIndex(currentIndex + 1);
+        }
+      };
+
+      currentUtterance.onerror = () => {
+        if (isPlaying) {
+          speakNextIndex(currentIndex + 1);
+        }
+      };
+
+      synth.speak(currentUtterance);
+    }
+
+    function playAudio() {
+      isPlaying = true;
+      playIcon.textContent = "pause";
+      if (synth.paused) {
+        synth.resume();
+      } else {
+        speakNextIndex(currentIndex);
+      }
+    }
+
+    function pauseAudio() {
+      isPlaying = false;
+      playIcon.textContent = "play_arrow";
+      if (synth.speaking) {
+        synth.pause();
+      }
+    }
+
+    function stopAudio() {
+      isPlaying = false;
+      playIcon.textContent = "play_arrow";
+      synth.cancel();
+      clearHighlights();
+      currentIndex = 0;
+      updateProgress(0);
+    }
+
+    playBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        pauseAudio();
+      } else {
+        playAudio();
+      }
+    });
+
+    // YouTube Seeking Interaction
+    progressContainer.addEventListener("click", (e) => {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const percent = Math.max(0, Math.min(1, clickX / rect.width));
+      const targetCharCount = totalCharCount * percent;
+
+      let accumulated = 0;
+      let targetIndex = 0;
+
+      for (let i = 0; i < textElements.length; i++) {
+        accumulated += textElements[i].textContent.trim().length;
+        if (accumulated >= targetCharCount) {
+          targetIndex = i;
+          break;
+        }
+      }
+
+      synth.cancel();
+      updateProgress(percent * 100);
+
+      if (isPlaying) {
+        speakNextIndex(targetIndex);
+      } else {
+        currentIndex = targetIndex;
+        clearHighlights();
+        textElements[currentIndex].classList.add("active-reading");
+        textElements[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    updateTimeDisplay(0);
+
+  </script>
 
 </body>
 
