@@ -13,7 +13,7 @@
   <title>بطاركة مصر</title>
 
   <style>
-
+    
     :root {
       --bg: #eee8dc;
       --bg-2: #f8f4eb;
@@ -44,14 +44,62 @@
       --shadow: 0 20px 55px rgba(0,0,0,.35);
       --shadow-soft: 0 10px 30px rgba(0,0,0,.25);
     }
-
+.announcement-ticker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto 20px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+}
+.announcement-ticker::before,
+.announcement-ticker::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.announcement-ticker::before { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+.announcement-ticker::after  { left: 0;  background: linear-gradient(to right, var(--surface), transparent); }
+.ticker-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: tickerScroll 28s linear infinite;
+}
+.announcement-ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 26px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+.ticker-item .material-symbols-outlined { font-size: 17px; color: var(--gold); }
+.ticker-divider { width: 1px; height: 18px; background: var(--line); flex: 0 0 auto; }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50.333%); }
+}
     * { box-sizing: border-box; }
-
+      
     html {
       scroll-behavior: smooth;
     }
 
     body {
+      
       min-height: 100vh;
       margin: 0;
       padding: 28px clamp(14px, 4vw, 70px) 80px;
@@ -102,7 +150,7 @@
       width: min(1450px, 100%);
       margin: 0 auto;
     }
-
+    
     /* ---------- HERO ---------- */
     .page-heading {
       position: relative;
@@ -1155,6 +1203,26 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+
+
+    /* ---------- ACHIEVEMENTS ---------- */
+    .achievements-button{position:fixed;left:22px;bottom:22px;z-index:30;width:52px;height:52px;border:1px solid var(--line);border-radius:16px;color:#fff;background:var(--gold);box-shadow:var(--shadow);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:.3s ease}
+    .achievements-button:hover{transform:translateY(-5px) scale(1.05)}
+    .achievements-button .achievement-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 5px;border-radius:999px;background:#a33a2c;color:#fff;font:800 10px/22px "Cairo",sans-serif;border:2px solid var(--surface-strong)}
+    .achievements-dialog{width:min(900px,calc(100% - 24px));max-height:min(760px,90vh);padding:0;border:1px solid var(--line);border-radius:26px;color:var(--ink);background:var(--surface-strong);box-shadow:0 35px 100px rgba(0,0,0,.4)}
+    .achievements-dialog::backdrop{background:rgba(15,20,21,.72);backdrop-filter:blur(7px)}
+    .achievements-header{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:20px 22px;border-bottom:1px solid var(--line);background:var(--surface-strong)}
+    .achievements-header h2{margin:0;font-family:"Amiri",serif;font-size:31px}.achievements-header p{margin:2px 0 0;color:var(--muted);font-size:12px}
+    .achievements-close{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--ink);cursor:pointer}
+    .achievements-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;padding:20px}
+    .achievement-card{display:flex;align-items:center;gap:12px;min-height:92px;padding:14px;border:1px solid var(--line);border-radius:17px;background:var(--surface);transition:.25s ease}
+    .achievement-card.unlocked{border-color:var(--gold);box-shadow:0 10px 24px rgba(173,122,47,.12)}
+    .achievement-card.locked{filter:grayscale(1);opacity:.62}.achievement-icon{width:48px;height:48px;flex:0 0 auto;display:grid;place-items:center;border-radius:14px;background:var(--gold-soft);color:var(--gold);font-size:26px}.achievement-card h3{margin:0 0 3px;font-size:14px}.achievement-card p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+    .achievement-progress{height:7px;margin:0 20px 20px;border-radius:999px;background:var(--gold-soft);overflow:hidden}.achievement-progress>span{display:block;height:100%;width:0;background:var(--gold);transition:width .45s ease}
+    .achievement-toast{position:fixed;left:50%;bottom:28px;z-index:100;display:flex;align-items:center;gap:12px;min-width:min(380px,calc(100% - 28px));padding:13px 17px;border:1px solid var(--gold);border-radius:17px;color:var(--ink);background:var(--surface-strong);box-shadow:0 22px 60px rgba(0,0,0,.22);transform:translate(-50%,120px);opacity:0;pointer-events:none;transition:.45s cubic-bezier(.2,.8,.2,1)}
+    .achievement-toast.show{transform:translate(-50%,0);opacity:1}.achievement-toast .material-symbols-outlined{color:var(--gold);font-size:30px}
+    @media(max-width:650px){.achievements-button{left:14px;bottom:14px}.achievements-grid{grid-template-columns:1fr;padding:14px}.achievements-header{padding:16px}.achievements-header h2{font-size:26px}}
+
     @keyframes voicePulse {
       50% { box-shadow: 0 0 0 9px rgba(163,58,44,.13); }
     }
@@ -1165,7 +1233,27 @@
 
 <body>
 <main>
-
+ <div class="announcement-ticker" role="marquee" aria-label="إعلانات الموقع">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>الدليل التاريخي لبطاركة الإسكندرية</span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>تعرّف على حياة وتاريخ ١١٨ بطريركًا</span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>استكشف تاريخ الكنيسة القبطية الأرثوذكسية</span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>ابحث عن البطاركة حسب الاسم أو السنة أو الرقم أو الحالة <span>•</span></span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>الدليل التاريخي لبطاركة الإسكندرية</span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>تعرّف على حياة وتاريخ ١١٨ بطريركًا</span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>استكشف تاريخ الكنيسة القبطية الأرثوذكسية</span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+    <span class="ticker-item"><span class="material-symbols-outlined">church</span>ابحث عن البطاركة حسب الاسم أو السنة أو الرقم أو الحالة <span>•</span></span>
+    <span class="ticker-divider"><span class="material-symbols-outlined">church</span></span>
+  </div>
+</div>
+</div>
   <header class="page-heading">
     <button type="button" id="themeToggle" class="theme-toggle" aria-label="تفعيل الوضع الداكن" title="تفعيل الوضع الداكن">
       <span class="material-symbols-outlined light-icon" aria-hidden="true">dark_mode</span>
@@ -1443,7 +1531,7 @@
            alt="كلاديانوس">
 
       <h3>
-        9. كلاديانوس
+        9. الكلاديانوس
       </h3>
 
       <p>
@@ -3443,6 +3531,27 @@
     </div>
   </dialog>
 
+
+  <button type="button" id="achievementsButton" class="achievements-button" aria-label="الإنجازات" title="الإنجازات">
+    <span class="material-symbols-outlined" aria-hidden="true">emoji_events</span>
+    <span id="achievementBadge" class="achievement-badge">0</span>
+  </button>
+
+  <dialog id="achievementsDialog" class="achievements-dialog">
+    <div class="achievements-header">
+      <div><h2>الإنجازات 🏆</h2><p id="achievementSummary">ابدأ الاستكشاف لفتح الإنجازات</p></div>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" id="clearAchievementsButton" class="achievements-close" aria-label="مسح جميع الإنجازات" title="مسح جميع الإنجازات" style="color: #a33a2c;">
+          <span class="material-symbols-outlined">delete_sweep</span>
+        </button>
+        <button type="button" id="achievementsClose" class="achievements-close" aria-label="إغلاق"><span class="material-symbols-outlined">close</span></button>
+      </div>
+    </div>
+    <div class="achievement-progress"><span id="achievementProgressBar"></span></div>
+    <div id="achievementsGrid" class="achievements-grid"></div>
+  </dialog>
+  <div id="achievementToast" class="achievement-toast" role="status" aria-live="polite"><span class="material-symbols-outlined">emoji_events</span><div><strong id="achievementToastTitle">إنجاز جديد!</strong><div id="achievementToastText"></div></div></div>
+
   <script>
     const storyContent = document.getElementById("storyContent");
     const patriarchStories = {
@@ -3470,6 +3579,91 @@
     const filterToggle = document.getElementById("filterToggle");
     const filterPanel = document.querySelector(".filter-panel");
     const favoriteKeys = new Set(JSON.parse(localStorage.getItem("patriarchs-favorites") || "[]"));
+
+
+    /* ---------- ACHIEVEMENT SYSTEM ---------- */
+    const achievementsButton = document.getElementById("achievementsButton");
+    const achievementsDialog = document.getElementById("achievementsDialog");
+    const achievementsClose = document.getElementById("achievementsClose");
+    const achievementsGrid = document.getElementById("achievementsGrid");
+    const achievementBadge = document.getElementById("achievementBadge");
+    const achievementSummary = document.getElementById("achievementSummary");
+    const achievementProgressBar = document.getElementById("achievementProgressBar");
+    const achievementToast = document.getElementById("achievementToast");
+    const achievementToastTitle = document.getElementById("achievementToastTitle");
+    const achievementToastText = document.getElementById("achievementToastText");
+    const achievementStateKey = "patriarchs-achievements-v1";
+    let achievementState = {};
+    try { achievementState = JSON.parse(localStorage.getItem(achievementStateKey) || "{}"); } catch (e) { achievementState = {}; }
+    const achievementStats = { searches:0, favorites:0, previews:0, compares:0, randoms:0, themes:0, prints:0, downloads:0, copies:0, voice:0, filters:0, views:0, cardClicks:0, sessionStart:Date.now() };
+    const achievements = [
+      ["welcome","البداية","افتح موقع البطاركة لأول مرة","flag"], ["explorer1","مستكشف مبتدئ","افتح أول بطاقة بطريرك","explore"], ["explorer5","مستكشف التاريخ","افتح 5 بطاقات","travel_explore"], ["search1","الباحث","استخدم البحث مرة واحدة","search"], ["search5","باحث محترف","ابحث 5 مرات","manage_search"], ["favorite1","أول مفضلة","أضف بطريركًا إلى المفضلة","star"], ["favorite5","جامع النجوم","أضف 5 إلى المفضلة","stars"], ["random1","مفاجأة تاريخية","استخدم البطريرك العشوائي","shuffle"], ["preview1","نظرة سريعة","افتح المعاينة","visibility"], ["compare1","المقارن","قارن بين بطريركين","compare_arrows"], ["dark","ليلة هادئة","فعّل الوضع الداكن","dark_mode"], ["light","نور التاريخ","عد إلى الوضع الفاتح","light_mode"], ["voice","صوت التاريخ","استخدم البحث الصوتي","mic"], ["filter","منظّم","استخدم الفلاتر","tune"], ["list","قارئ القائمة","غيّر إلى عرض القائمة","view_list"], ["grid","شبكة التاريخ","غيّر إلى العرض الشبكي","grid_view"], ["print","المؤرّخ","اطبع الدليل","print"], ["copy","الناسخ","انسخ نتائج البحث","content_copy"], ["download","حافظ التاريخ","نزّل قائمة النتائج","download"], ["scroll","رحلة طويلة","استكشف الصفحة حتى النهاية","south"], ["tenmin","باحث صبور","اقضِ 10 دقائق في الموقع","schedule"], ["twentycards","رحّالة التاريخ","افتح 20 بطاقة","map"], ["allfavorites","خمس نجوم","أضف 10 إلى المفضلة","hotel_class"], ["master","خبير البطاركة","افتح 10 إنجازات","military_tech"], ["legend","أسطورة التاريخ","افتح 20 إنجازًا","workspace_premium"]
+    ];
+    function playAchievementSound(){
+  try {
+    const A = window.AudioContext || window.webkitAudioContext;
+    if (!A) return;
+    if (!window.achievementAudioContext) window.achievementAudioContext = new A();
+    const c = window.achievementAudioContext;
+    if (c.state === "suspended") c.resume();
+    const now = c.currentTime;
+    const master = c.createGain();
+    master.gain.setValueAtTime(0.0001, now);
+    master.gain.exponentialRampToValueAtTime(0.16, now + 0.03);
+    master.gain.exponentialRampToValueAtTime(0.11, now + 0.75);
+    master.gain.exponentialRampToValueAtTime(0.0001, now + 1.15);
+    master.connect(c.destination);
+
+    // Bright three-note achievement fanfare
+    const notes = [659.25, 783.99, 1046.5, 1318.51];
+    notes.forEach((frequency, i) => {
+      const start = now + i * 0.12;
+      const osc = c.createOscillator();
+      const gain = c.createGain();
+      osc.type = i === 3 ? "triangle" : "sine";
+      osc.frequency.setValueAtTime(frequency, start);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(i === 3 ? 0.42 : 0.28, start + 0.018);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + (i === 3 ? 0.58 : 0.24));
+      osc.connect(gain); gain.connect(master);
+      osc.start(start); osc.stop(start + (i === 3 ? 0.62 : 0.28));
+    });
+
+    // Soft sparkle on the final note
+    for (let i = 0; i < 4; i++) {
+      const start = now + 0.48 + i * 0.055;
+      const osc = c.createOscillator();
+      const gain = c.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(1760 + i * 220, start);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.07, start + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.12);
+      osc.connect(gain); gain.connect(master);
+      osc.start(start); osc.stop(start + 0.14);
+    }
+  } catch (e) { console.warn("Achievement sound unavailable", e); }
+}
+    function unlockedCount(){ return Object.keys(achievementState).filter(k=>achievementState[k]).length; }
+    function saveAchievements(){ try{localStorage.setItem(achievementStateKey,JSON.stringify(achievementState));}catch(e){} }
+    function renderAchievements(){ const count=unlockedCount();achievementBadge.textContent=count;achievementSummary.textContent=`فتحت ${count} من ${achievements.length} إنجازًا`;achievementProgressBar.style.width=(count/achievements.length*100)+"%";achievementsGrid.innerHTML=achievements.map(a=>`<article class="achievement-card ${achievementState[a[0]]?'unlocked':'locked'}"><span class="material-symbols-outlined achievement-icon">${achievementState[a[0]]?a[3]:'lock'}</span><div><h3>${a[1]}</h3><p>${achievementState[a[0]]?a[2]:'إنجاز مقفل — استمر في الاستكشاف'}</p></div></article>`).join(""); }
+    
+    const clearAchievementsButton = document.getElementById("clearAchievementsButton");
+    clearAchievementsButton.addEventListener("click", function() {
+      if (confirm("هل أنت متأكد من رغبتك في مسح جميع الإنجازات؟")) {
+        achievementState = {};
+        saveAchievements();
+        renderAchievements();
+        showFeatureStatus("تم مسح جميع الإنجازات");
+      }
+    });
+    function unlockAchievement(id){ if(achievementState[id]) return; const item=achievements.find(a=>a[0]===id);if(!item)return;achievementState[id]=true;saveAchievements();renderAchievements();playAchievementSound();achievementToastTitle.textContent="إنجاز جديد! 🏆";achievementToastText.textContent=item[1]+" — "+item[2];achievementToast.classList.add("show");clearTimeout(window.achievementToastTimer);window.achievementToastTimer=setTimeout(()=>achievementToast.classList.remove("show"),4200);if(unlockedCount()>=10) setTimeout(()=>unlockAchievement("master"),100);if(unlockedCount()>=20) setTimeout(()=>unlockAchievement("legend"),100); }
+    function checkAchievements(){ if(achievementStats.cardClicks>=1)unlockAchievement("explorer1");if(achievementStats.cardClicks>=5)unlockAchievement("explorer5");if(achievementStats.cardClicks>=20)unlockAchievement("twentycards");if(achievementStats.searches>=1)unlockAchievement("search1");if(achievementStats.searches>=5)unlockAchievement("search5");if(achievementStats.favorites>=1)unlockAchievement("favorite1");if(achievementStats.favorites>=5)unlockAchievement("favorite5");if(achievementStats.favorites>=10)unlockAchievement("allfavorites");if(achievementStats.randoms>=1)unlockAchievement("random1");if(achievementStats.previews>=1)unlockAchievement("preview1");if(achievementStats.compares>=1)unlockAchievement("compare1");if(achievementStats.voice>=1)unlockAchievement("voice");if(achievementStats.filters>=1)unlockAchievement("filter");if(achievementStats.prints>=1)unlockAchievement("print");if(achievementStats.copies>=1)unlockAchievement("copy");if(achievementStats.downloads>=1)unlockAchievement("download");if(achievementStats.views>=1)unlockAchievement("list"); }
+    achievementsButton.addEventListener("click",()=>{renderAchievements();achievementsDialog.showModal();});achievementsClose.addEventListener("click",()=>achievementsDialog.close());achievementsDialog.addEventListener("click",e=>{if(e.target===achievementsDialog)achievementsDialog.close();});
+    unlockAchievement("welcome");renderAchievements();
+    cards.forEach(card=>card.addEventListener("click",()=>{achievementStats.cardClicks++;checkAchievements();}));
+    window.addEventListener("scroll",()=>{if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-80)unlockAchievement("scroll");},{passive:true});
+    setTimeout(()=>unlockAchievement("tenmin"),600000);
     const searchSuggestions = document.getElementById("searchSuggestions");
 
     cards.forEach(function (card) {
@@ -3948,6 +4142,16 @@
       randomCard.scrollIntoView({ behavior: "smooth", block: "center" });
       setTimeout(function () { randomCard.classList.remove("random-focus"); }, 2200);
     });
+
+
+
+    /* Achievement interaction tracking */
+    searchInput.addEventListener("input", function(){ if(searchInput.value.trim().length>=2){ achievementStats.searches++; checkAchievements(); } });
+    [numberFilter,yearFilter,nameFilter,eraFilter,durationFilter,favoritesOnly].forEach(function(el){ el.addEventListener("change",function(){achievementStats.filters++;checkAchievements();}); });
+    themeToggle.addEventListener("click",function(){ setTimeout(function(){ if(document.body.classList.contains("dark-mode")) unlockAchievement("dark"); else unlockAchievement("light"); },20); });
+    randomSearchButton.addEventListener("click",function(){achievementStats.randoms++;checkAchievements();});
+    voiceSearchButton.addEventListener("click",function(){achievementStats.voice++;checkAchievements();});
+    document.addEventListener("click",function(e){ const id=e.target.closest("button")?.id; if(id==="listViewButton"){achievementStats.views++;unlockAchievement("list");} if(id==="gridViewButton"){unlockAchievement("grid");} if(id==="printButton"){achievementStats.prints++;checkAchievements();} if(id==="copyListButton"){achievementStats.copies++;checkAchievements();} if(id==="downloadListButton"){achievementStats.downloads++;checkAchievements();} if(e.target.closest(".preview-button")){achievementStats.previews++;checkAchievements();} if(e.target.closest(".favorite-button")){achievementStats.favorites++;checkAchievements();} if(id==="compareButton"){achievementStats.compares++;checkAchievements();} });
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
